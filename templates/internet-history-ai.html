@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Internet Key Milestones</title>
-</head>
-<body>
-
-<header>
+{% extends "base.html" %}
+{% block title %}Internet Key-Milestones{% endblock %}
+   {% block content %}
 <h1>Internet Key-Milestones</h1>
 <p>
 The Internet, which originated from the U.S. Department of Defense's ARPANET in 1969,
@@ -17,21 +11,6 @@ academic, and government networks. As the universal infrastructure that hosts
 applications like the World Wide Web and email, its security, scalability, and
 governance remain central to modern technological research.
 </p>
-</header>
-
-<nav>
-<h2>Milestones</h2>
-<ul>
-<li><a href="#arpanet">ARPANET Launch (1969)</a></li>
-<li><a href="#email">Creation of Email (1971)</a></li>
-<li><a href="#dns">Introduction of DNS (1983)</a></li>
-<li><a href="#tcpip">Adoption of TCP/IP (1983)</a></li>
-<li><a href="#nsfnet">NSFNET Decommissioning &amp; Internet Privatization (1995)</a></li>
-<li><a href="#icann">Formation of ICANN and Definition of IPv6 (1998)</a></li>
-</ul>
-</nav>
-
-<main>
 
 <article id="arpanet">
 <header>
@@ -122,15 +101,5 @@ expansion of its operational offices.</p>
 </footer>
 </article>
 
-</main>
+{% endblock %}
 
-<footer>
-<p>Web Programming — built with Flask and deployed on
-Render.</p>
-<p>This website is created for educational purposes
-only, as part of the GIN446 - Web Programming course,
-School of Engineering, USEK. (Fall 2026-2027)</p>
-</footer>
-
-</body>
-</html>

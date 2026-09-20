@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
- <head>
-    <title>Internet Key-Milestones</title>
- </head>   
- <body>
-    <header>
+{% extends "base.html" %}
+{% block title %}Internet Key-Milestones{% endblock %}
+   {% block content %}
         <h1>History of the internet</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/internet-history">History of the internet</a></li>
-            <li><a href="/web-history">History</a></li>
-        </ul>
-    </nav>
-    <main>
         <section>
             <h2>Internet Key-Milestones</h2>
             <article>
@@ -62,12 +49,5 @@
                 <a href="https://www.icann.org/en/history/icann-turns-25">ICANN</a>
             </article>
         </section>
-    </main>
-    <footer>
-          <p>Web Programming — built with Flask and deployed on Render.</p>
-    <p>This website is created for educational purposes only, as part of the GIN446 - Web Programming course, School of Engineering, USEK. (Fall 2026-2027)</p>
-
-    </footer>
-   
- </body>
-</html>
+{% endblock %}
+  

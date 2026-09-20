@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Web Key Milestones</title>
-</head>
-<body>
-  <header>
+{% extends "base.html" %}
+{% block title %}Web Key-Milestones{% endblock %}
+   {% block content %}
     <h1>Web Key Milestones</h1>
     <p>The World Wide Web, invented by Sir Tim Berners-Lee in 1989, is a global information space where digital documents and resources are identified by URLs and interlinked via hypertext. Operating over the internet's physical infrastructure through protocols like HTTP/HTTPS, it evolved from a static database into an interactive, ubiquitous ecosystem — the backbone of modern commerce, communication, and social life.</p>
-  </header>
+  
 
-  <main>
+  
     <section>
       <article>
         <h2>The World Wide Web Proposal</h2>
@@ -62,14 +56,6 @@
         <footer><a href="https://html.spec.whatwg.org/multipage/">Source: html.spec.whatwg.org/multipage</a></footer>
       </article>
     </section>
-  </main>
+  {% endblock %}
 
-  <footer>
-    <p>Web Programming — built with Flask and deployed on
-Render.</p>
-<p>This website is created for educational purposes
-only, as part of the GIN446 - Web Programming course,
-School of Engineering, USEK. (Fall 2026-2027)</p>
-  </footer>
-</body>
-</html>
+ 
