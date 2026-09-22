@@ -1,54 +1,28 @@
-/* ==========================================================================
-   OAT & AMBER DESIGN SYSTEM — Mobile-First Responsive Edition
-   Theme: Warm, organic soft-touch with smooth rounded blocks
-   Fonts: Outfit (Headings) & DM Sans (Body)
-   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@500;600;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@400;500;600;700&display=swap');
-
-/* --------------------------------------------------------------------------
-   1. DESIGN TOKENS (:root)
-   -------------------------------------------------------------------------- */
+/* --- 1. DESIGN TOKENS --- */
 :root {
-    /* Color Palette */
-    --bg-base: #F9F6F0;           /* Soft Oatmeal Base */
-    --bg-surface: #FFFFFF;        /* Pure Clean White for Cards */
-    --bg-surface-alt: #FEF3C7;    /* Pale Amber Wash */
-    --text-main: #1C1917;         /* Espresso Ink */
-    --text-muted: #57534E;        /* Soft Charcoal Text */
-    --accent-amber: #CA8A04;      /* Warm Honey Amber */
-    --accent-hover: #A16207;      /* Muted Ochre Accent */
+    --bg-base: #F9F6F0;
+    --bg-surface: #FFFFFF;
+    --bg-surface-alt: #FEF3C7;
+    --text-main: #1C1917;
+    --text-muted: #57534E;
+    --accent-amber: #CA8A04;
+    --accent-hover: #A16207;
     --border-subtle: rgba(202, 138, 4, 0.18);
-
-    /* Typography */
-    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-
-    /* Corner Radii */
-    --radius-sm: 8px;
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
     --radius-md: 12px;
-    --radius-lg: 16px;
     --radius-pill: 9999px;
-
-    /* Spacing & Layout */
-    --container-max-width: 900px;
-    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --container-max: 900px;
+    --transition: all 0.25s ease;
     --shadow-soft: 0 10px 30px -5px rgba(28, 25, 23, 0.04);
     --shadow-hover: 0 15px 35px -5px rgba(202, 138, 4, 0.12);
 }
 
-/* --------------------------------------------------------------------------
-   2. GLOBAL RESET & BASE STYLES (Mobile First — Small Screens / 375px+)
-   -------------------------------------------------------------------------- */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
+/* --- 2. GLOBAL RESET & BASE (MOBILE-FIRST) --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
 body {
     background-color: var(--bg-base);
@@ -59,157 +33,60 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden; /* Guarantees no horizontal scroll on small viewports */
+    overflow-x: hidden;
 }
 
-/* Headings with overflow safety for long mobile text */
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-    color: var(--text-main);
-    line-height: 1.25;
-    font-weight: 600;
-    overflow-wrap: break-word;
-    hyphens: auto;
-}
+h1, h2, h3 { font-family: var(--font-heading); color: var(--text-main); line-height: 1.25; font-weight: 600; overflow-wrap: break-word; }
+p, a { overflow-wrap: break-word; }
+a { color: var(--accent-amber); text-decoration: none; transition: var(--transition); }
+a:hover { color: var(--accent-hover); }
 
-/* Links & Text Wrapping Safety */
-a {
-    color: var(--accent-amber);
-    text-decoration: none;
-    transition: var(--transition);
-    overflow-wrap: anywhere; /* Prevents raw URLs from overflowing 375px screens */
-}
+/* --- 3. HEADER & FLEXBOX NAVIGATION --- */
+header { text-align: center; padding: 2.25rem 1rem 1rem; max-width: var(--container-max); margin: 0 auto; }
+header h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.4rem; }
+header p { font-size: 0.95rem; color: var(--text-muted); }
 
-a:hover {
-    color: var(--accent-hover);
-}
-
-p {
-    overflow-wrap: break-word;
-}
-
-/* --------------------------------------------------------------------------
-   3. HEADER & MOBILE NAVIGATION (Default: Phone Screens)
-   -------------------------------------------------------------------------- */
-header {
-    text-align: center;
-    padding: 2.25rem 1rem 1rem 1rem;
-    width: 100%;
-    max-width: var(--container-max-width);
-    margin: 0 auto;
-}
-
-header h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: var(--text-main);
-    margin-bottom: 0.4rem;
-}
-
-header p {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-}
-
-/* Navigation: Vertical stack for easy finger targets on phone screens */
 header + ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
     gap: 0.5rem;
     padding: 0 1rem;
-    margin: 1.25rem auto 2.5rem auto;
-    width: 100%;
-    max-width: var(--container-max-width);
-}
-
-header + ul li {
-    width: 100%;
+    margin: 1.25rem auto 2.5rem;
+    max-width: var(--container-max);
 }
 
 header + ul li a {
     display: flex;
-    align-items: center;
     justify-content: center;
     padding: 0.75rem 1rem;
-    background-color: var(--bg-surface-alt);
+    background: var(--bg-surface-alt);
     color: var(--text-main);
     font-family: var(--font-heading);
     font-weight: 600;
-    font-size: 0.95rem;
     border-radius: var(--radius-pill);
-    border: 1px solid transparent;
-    text-align: center;
-    width: 100%;
-    transition: var(--transition);
-}
-
-header + ul li a:hover,
-header + ul li a:active {
-    background-color: var(--accent-amber);
-    color: #FFFFFF;
-}
-
-/* --------------------------------------------------------------------------
-   4. MAIN CONTENT AREA & LAYOUT (Default: Mobile)
-   -------------------------------------------------------------------------- */
-main {
-    flex: 1;
-    width: 100%;
-    max-width: var(--container-max-width);
-    margin: 0 auto;
-    padding: 0 1rem 3rem 1rem;
-}
-
-main > h1 {
-    font-size: 1.6rem;
-    letter-spacing: -0.01em;
-    margin-bottom: 1rem;
     text-align: center;
 }
 
-main > p {
-    font-size: 0.975rem;
-    color: var(--text-muted);
-    text-align: center;
-    margin: 0 auto 2rem auto;
-    line-height: 1.7;
-}
+header + ul li a:hover { background: var(--accent-amber); color: #FFF; }
 
-section {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    margin-top: 1rem;
-}
+/* --- 4. MAIN & SECTIONS --- */
+main { flex: 1; max-width: var(--container-max); margin: 0 auto; padding: 0 1rem 3rem; width: 100%; }
+main > h1 { font-size: 1.6rem; text-align: center; margin-bottom: 1rem; }
+main > p { font-size: 0.975rem; color: var(--text-muted); text-align: center; margin: 0 auto 2rem; line-height: 1.7; }
 
-section > h2 {
-    font-size: 1.25rem;
-    color: var(--text-main);
-    padding-bottom: 0.4rem;
-    border-bottom: 2px solid var(--bg-surface-alt);
-    margin-bottom: 0.25rem;
-}
+section { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1rem; }
+section > h2 { font-size: 1.25rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--bg-surface-alt); }
 
-/* --------------------------------------------------------------------------
-   5. WEEKLY WORK GALLERY (.weekly-list) (Default: Single Column Grid)
-   -------------------------------------------------------------------------- */
+/* --- 5. WEEKLY WORK GALLERY (CSS GRID) --- */
 .weekly-list {
     list-style: none;
     display: grid;
     grid-template-columns: 1fr;
     gap: 0.85rem;
-    padding: 0;
-    margin: 0;
 }
 
-.weekly-list li {
-    display: flex;
-}
-
+.weekly-list li { display: flex; }
 .weekly-list li a {
     display: flex;
     flex-direction: column;
@@ -219,37 +96,20 @@ section > h2 {
     width: 100%;
     min-height: 90px;
     padding: 1.25rem 1rem;
-    background-color: var(--bg-surface);
+    background: var(--bg-surface);
     color: var(--text-main);
     font-family: var(--font-heading);
     font-weight: 600;
-    font-size: 1rem;
     border-radius: var(--radius-md);
     border: 1px solid var(--border-subtle);
     box-shadow: var(--shadow-soft);
-    transition: var(--transition);
 }
 
-.weekly-list li a:hover {
-    background-color: var(--bg-surface-alt);
-    color: var(--accent-hover);
-}
+.weekly-list li a:hover { background: var(--bg-surface-alt); color: var(--accent-hover); }
 
-.weekly-list li:only-child {
-    background-color: var(--bg-surface);
-    padding: 1.25rem;
-    border-radius: var(--radius-md);
-    border: 1px dashed var(--border-subtle);
-    color: var(--text-muted);
-    justify-content: center;
-    text-align: center;
-}
-
-/* --------------------------------------------------------------------------
-   6. ARTICLE CARDS (Default: Compact Mobile)
-   -------------------------------------------------------------------------- */
+/* --- 6. ARTICLE CARDS --- */
 article {
-    background-color: var(--bg-surface);
+    background: var(--bg-surface);
     border-radius: var(--radius-md);
     padding: 1.25rem;
     border: 1px solid var(--border-subtle);
@@ -257,225 +117,44 @@ article {
     transition: var(--transition);
 }
 
-article h2, 
-article h3 {
-    font-size: 1.2rem;
-    color: var(--text-main);
-    margin-bottom: 0.4rem;
-}
+article header { padding: 0; text-align: left; margin-bottom: 0.75rem; }
+article h2, article h3 { font-size: 1.2rem; margin-bottom: 0.2rem; }
+time { display: inline-block; font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: var(--accent-amber); background: var(--bg-surface-alt); padding: 0.15rem 0.65rem; border-radius: var(--radius-pill); margin-bottom: 0.5rem; }
+article p { color: var(--text-main); font-size: 0.95rem; margin-bottom: 1rem; }
+article p:last-child { margin-bottom: 0; }
+article footer { padding: 0; margin-top: 1rem; border: none; background: transparent; }
 
-article header {
-    padding: 0;
-    text-align: left;
-    margin: 0 0 0.75rem 0;
-}
+/* --- 7. FOOTER --- */
+footer { background: var(--bg-surface-alt); text-align: center; padding: 2.25rem 1rem; margin-top: auto; border-top: 1px solid var(--border-subtle); }
+footer p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.4rem; }
+footer p:last-child { margin-bottom: 0; }
 
-article header h2 {
-    margin-bottom: 0.2rem;
-}
-
-time {
-    display: inline-block;
-    font-family: var(--font-heading);
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--accent-amber);
-    background-color: var(--bg-surface-alt);
-    padding: 0.15rem 0.65rem;
-    border-radius: var(--radius-pill);
-    margin-bottom: 0.5rem;
-}
-
-article p {
-    color: var(--text-main);
-    font-size: 0.95rem;
-    line-height: 1.65;
-    margin-bottom: 1rem;
-}
-
-article p:last-child {
-    margin-bottom: 0;
-}
-
-article footer {
-    padding: 0;
-    margin-top: 1rem;
-    text-align: left;
-    border: none;
-    background: transparent;
-}
-
-article footer a {
-    font-weight: 500;
-    font-size: 0.9rem;
-    color: var(--accent-amber);
-}
-
-/* --------------------------------------------------------------------------
-   7. FOOTER STYLING (Default: Mobile)
-   -------------------------------------------------------------------------- */
-footer {
-    background-color: var(--bg-surface-alt);
-    text-align: center;
-    padding: 2.25rem 1rem;
-    margin-top: auto;
-    border-top: 1px solid var(--border-subtle);
-}
-
-footer p {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 0.4rem;
-    line-height: 1.5;
-}
-
-footer p:last-child {
-    margin-bottom: 0;
-}
-
-
-/* ==========================================================================
-   MEDIA QUERIES (Progressive Enhancement)
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   TABLET BREAKPOINT (@media min-width: 640px)
-   -------------------------------------------------------------------------- */
+/* --- 8. RESPONSIVE BREAKPOINTS (TABLET & DESKTOP) --- */
 @media (min-width: 640px) {
-    body {
-        font-size: 1rem;
-        line-height: 1.75;
-    }
+    body { font-size: 1rem; }
+    header { padding: 3rem 1.5rem 1.25rem; }
+    header h1 { font-size: 2rem; }
+    
+    /* Nav turns into Flex Row */
+    header + ul { flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 0.65rem; margin-bottom: 3rem; }
+    header + ul li a { display: inline-flex; padding: 0.55rem 1.2rem; }
+    header + ul li a:hover { transform: translateY(-2px); }
 
-    header {
-        padding: 3rem 1.5rem 1.25rem 1.5rem;
-    }
+    main { padding: 0 1.5rem 3.5rem; }
+    main > h1 { font-size: 1.85rem; }
+    
+    /* Grid expands to multi-column */
+    .weekly-list { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.1rem; }
+    .weekly-list li a { min-height: 120px; padding: 1.5rem 1.25rem; }
+    .weekly-list li a:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
 
-    header h1 {
-        font-size: 2rem;
-    }
-
-    header p {
-        font-size: 1.05rem;
-    }
-
-    /* Navigation switches to horizontal row */
-    header + ul {
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 0.65rem;
-        padding: 0 1.5rem;
-        margin: 1.5rem auto 3rem auto;
-    }
-
-    header + ul li {
-        width: auto;
-    }
-
-    header + ul li a {
-        display: inline-flex;
-        width: auto;
-        padding: 0.55rem 1.2rem;
-    }
-
-    header + ul li a:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(202, 138, 4, 0.25);
-    }
-
-    main {
-        padding: 0 1.5rem 3.5rem 1.5rem;
-    }
-
-    main > h1 {
-        font-size: 1.85rem;
-    }
-
-    main > p {
-        font-size: 1.05rem;
-        margin-bottom: 2.5rem;
-    }
-
-    section {
-        gap: 1.5rem;
-    }
-
-    /* Weekly Work gallery expands to auto-fitting responsive columns */
-    .weekly-list {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 1.1rem;
-    }
-
-    .weekly-list li a {
-        min-height: 120px;
-        padding: 1.5rem 1.25rem;
-    }
-
-    .weekly-list li a:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-hover);
-    }
-
-    article {
-        border-radius: var(--radius-lg);
-        padding: 1.75rem;
-    }
-
-    article:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-hover);
-        border-color: rgba(202, 138, 4, 0.3);
-    }
-
-    article h2, 
-    article h3 {
-        font-size: 1.3rem;
-    }
-
-    article p {
-        font-size: 1rem;
-    }
-
-    footer {
-        padding: 2.75rem 1.5rem;
-    }
+    article { padding: 1.75rem; }
+    article:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
 }
 
-/* --------------------------------------------------------------------------
-   DESKTOP BREAKPOINT (@media min-width: 1024px)
-   -------------------------------------------------------------------------- */
 @media (min-width: 1024px) {
-    header {
-        padding-top: 3.75rem;
-    }
-
-    header h1 {
-        font-size: 2.25rem;
-    }
-
-    header + ul {
-        justify-content: space-evenly;
-        gap: 0.75rem;
-        margin-bottom: 3.5rem;
-    }
-
-    main > h1 {
-        font-size: 2rem;
-    }
-
-    .weekly-list {
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 1.25rem;
-    }
-
-    article {
-        padding: 2rem;
-    }
-
-    footer p:last-child {
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+    header h1 { font-size: 2.25rem; }
+    header + ul { justify-content: space-evenly; margin-bottom: 3.5rem; }
+    .weekly-list { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+    article { padding: 2rem; }
 }
