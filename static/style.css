@@ -9,13 +9,13 @@
     --text-muted: #57534E;
     --accent-amber: #CA8A04;
     --accent-hover: #A16207;
-    --border-subtle: rgba(202, 138, 4, 0.18);
+    --border-subtle: rgba(202, 139, 4, 0.336);
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'DM Sans', sans-serif;
     --radius-md: 12px;
     --radius-pill: 9999px;
     --container-max: 900px;
-    --transition: all 0.25s ease;
+    --transition: all 0.25s ease; 
     --shadow-soft: 0 10px 30px -5px rgba(28, 25, 23, 0.04);
     --shadow-hover: 0 15px 35px -5px rgba(202, 138, 4, 0.12);
 }
