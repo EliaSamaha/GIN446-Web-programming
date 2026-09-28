@@ -1,0 +1,343 @@
+/* ==========================================================================
+   ENGINEERING STUDENT PROFILE - FORM & PROFILE STYLESHEET
+   Matches Portfolio Theme (Outfit + DM Sans, Amber Accents, Warm Surfaces)
+   ========================================================================== */
+
+/* --- 1. FORM CONTAINER & HEADER --- */
+main > h2 {
+    font-family: var(--font-heading);
+    font-size: 1.85rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+main > p {
+    text-align: center;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto 2.25rem;
+    font-size: 0.975rem;
+    line-height: 1.6;
+}
+
+/* Main Form Card Wrapper */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+
+/* Hide legacy line-breaks in HTML to ensure clean CSS flex/grid spacing */
+form br {
+    display: none;
+}
+
+/* --- 2. FIELDSETS & LEGENDS --- */
+fieldset {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.75rem 1.5rem;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    transition: var(--transition);
+}
+
+fieldset:focus-within {
+    border-color: var(--accent-amber);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Section Legends */
+legend {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    background: var(--bg-surface-alt);
+    padding: 0.4rem 1.1rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-subtle);
+    margin-bottom: 0.5rem;
+}
+
+/* Nested Fieldsets (Radios for Graduation, Internship, etc.) */
+fieldset fieldset {
+    background: var(--bg-base);
+    border: 1px dashed var(--border-subtle);
+    padding: 1.25rem 1rem;
+    margin-top: 0.5rem;
+    box-shadow: none;
+    gap: 0.75rem;
+}
+
+fieldset fieldset legend {
+    font-size: 0.925rem;
+    font-weight: 600;
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: var(--text-main);
+    margin-bottom: 0.25rem;
+}
+
+/* --- 3. LABELS & FORM INPUTS --- */
+label {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.925rem;
+    color: var(--text-main);
+    margin-bottom: -0.5rem;
+}
+
+/* Standard Inputs: Text, Email, Tel, Url, Date, Month, Time, Number, Select, Textarea */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="number"],
+input[list],
+select,
+textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-main);
+    background-color: var(--bg-base);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    outline: none;
+    transition: var(--transition);
+}
+
+/* Hover & Focus States */
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="tel"]:hover,
+input[type="url"]:hover,
+input[type="date"]:hover,
+input[type="month"]:hover,
+input[type="time"]:hover,
+input[type="number"]:hover,
+input[list]:hover,
+select:hover,
+textarea:hover {
+    border-color: var(--accent-amber);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="number"]:focus,
+input[list]:focus,
+select:focus,
+textarea:focus {
+    background-color: var(--bg-surface);
+    border-color: var(--accent-amber);
+    box-shadow: 0 0 0 3px rgba(202, 138, 4, 0.2);
+}
+
+/* Placeholder Styling */
+::placeholder {
+    color: #A8A29E;
+    opacity: 1;
+}
+
+/* Textarea Customization */
+textarea {
+    resize: vertical;
+    min-height: 110px;
+    line-height: 1.5;
+}
+
+/* Select Multi-box */
+select[multiple] {
+    height: auto;
+    padding: 0.5rem;
+    background-color: var(--bg-surface);
+}
+
+select[multiple] option {
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 2px;
+}
+
+select[multiple] option:checked {
+    background-color: var(--bg-surface-alt);
+    color: var(--accent-hover);
+    font-weight: 600;
+}
+
+/* Helper text below multi-select */
+fieldset p {
+    font-size: 0.825rem;
+    color: var(--text-muted);
+    margin-top: -0.5rem;
+    font-style: italic;
+}
+
+/* Color Picker Input */
+input[type="color"] {
+    -webkit-appearance: none;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    width: 60px;
+    height: 42px;
+    padding: 4px;
+    background: var(--bg-base);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: none;
+    border-radius: 6px;
+}
+
+/* --- 4. RADIOS & CHECKBOXES --- */
+/* Form groups containing inline checkboxes/radios */
+fieldset fieldset,
+fieldset > label[for="experience"] + input[type="checkbox"],
+fieldset > input[type="checkbox"] {
+    accent-color: var(--accent-amber);
+}
+
+/* Checkbox & Radio Alignment */
+input[type="checkbox"],
+input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/* Inline label paired next to radios and checkboxes */
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.4rem;
+    margin-right: 1.25rem;
+    cursor: pointer;
+}
+
+/* Wrapper for final confirmation checkbox fieldset */
+fieldset:last-of-type {
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+/* --- 5. ACTION BUTTONS (SUBMIT & RESET) --- */
+#submit,
+#reset {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.975rem;
+    padding: 0.85rem 2rem;
+    border-radius: var(--radius-pill);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#submit {
+    background-color: var(--accent-amber);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(202, 138, 4, 0.25);
+}
+
+#submit:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(202, 138, 4, 0.35);
+}
+
+#reset {
+    background-color: var(--bg-surface-alt);
+    color: var(--text-main);
+    border: 1px solid var(--border-subtle);
+}
+
+#reset:hover {
+    background-color: #FDE68A;
+    color: #000000;
+    transform: translateY(-2px);
+}
+
+/* --- 6. SUBMITTED PROFILE PAGE STYLING (`profile.html`) --- */
+.profile {
+    background: var(--bg-surface);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-soft);
+    margin: 0 auto;
+}
+
+.profile-header {
+    border-top-width: 5px !important;
+}
+
+.profile h1 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.profile h2 {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+}
+
+.chip {
+    background: var(--bg-surface-alt);
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+/* --- 7. RESPONSIVE MEDIA QUERIES --- */
+@media (min-width: 640px) {
+    fieldset {
+        padding: 2.25rem 2rem;
+    }
+
+    /* Side-by-side positioning for submit and reset buttons */
+    fieldset:last-of-type {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    #submit, #reset {
+        margin-top: 0.5rem;
+    }
+
+    #submit {
+        margin-left: auto;
+    }
+}
