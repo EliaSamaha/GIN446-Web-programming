@@ -3,332 +3,236 @@
 
 /* --- 1. DESIGN TOKENS --- */
 :root {
-    --bg-base: #F9F6F0;
-    --bg-surface: #FFFFFF;
-    --bg-surface-alt: #FEF3C7;
-    --text-main: #1C1917;
-    --text-muted: #57534E;
-    --accent-amber: #CA8A04;
-    --accent-hover: #A16207;
-    --border-subtle: rgba(202, 139, 4, 0.25);
-    --font-heading: 'Outfit', sans-serif;
-    --font-body: 'DM Sans', sans-serif;
-    --radius-md: 12px;
-    --radius-pill: 9999px;
-    --container-max: 900px;
-    --transition: all 0.25s ease; 
-    --shadow-soft: 0 10px 25px -5px rgba(28, 25, 23, 0.05);
-    --shadow-hover: 0 12px 30px -5px rgba(202, 138, 4, 0.15);
+  --bg-base: #F9F6F0;
+  --bg-surface: #FFF;
+  --bg-surface-alt: #FEF3C7;
+  --text-main: #1C1917;
+  --text-muted: #57534E;
+  --accent-amber: #CA8A04;
+  --accent-hover: #A16207;
+  --border-subtle: rgba(202, 139, 4, 0.25);
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius-md: 12px;
+  --radius-pill: 9999px;
+  --container-max: 900px;
+  --transition: all 0.25s ease; 
+  --shadow-soft: 0 10px 25px -5px rgba(28, 25, 23, 0.05);
+  --shadow-hover: 0 12px 30px -5px rgba(202, 138, 4, 0.15);
 }
 
 /* --- 2. GLOBAL RESET & BASE --- */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--bg-base);
-    color: var(--text-main);
-    font-family: var(--font-body);
-    font-size: 0.975rem;
-    line-height: 1.65;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 0.975rem;
+  line-height: 1.65;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
 }
 
 h1, h2, h3 {
-    font-family: var(--font-heading);
-    color: var(--text-main);
-    line-height: 1.25;
-    font-weight: 600;
-    overflow-wrap: break-word;
+  font-family: var(--font-heading);
+  line-height: 1.25;
+  font-weight: 600;
+  overflow-wrap: break-word;
 }
 
 p, a {
-    overflow-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 a {
-    color: var(--accent-amber);
-    text-decoration: none;
-    transition: var(--transition);
+  color: var(--accent-amber);
+  text-decoration: none;
+  transition: var(--transition);
 }
 
 a:hover {
-    color: var(--accent-hover);
+  color: var(--accent-hover);
 }
 
 /* --- 3. HEADER & NAVIGATION --- */
-header {
-    text-align: center;
-    padding: 2.5rem 1rem 1.25rem;
-    max-width: var(--container-max);
-    margin: 0 auto;
+body > header {
+  text-align: center;
+  padding: 2.5rem 1rem 1.25rem;
+  max-width: var(--container-max);
+  margin: 0 auto;
 }
 
-header h1 {
-    font-size: 1.65rem;
-    font-weight: 700;
-    margin-bottom: 0.4rem;
-    letter-spacing: -0.01em;
+body > header h1 {
+  font-size: 1.65rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.01em;
 }
 
-header p {
-    font-size: 0.95rem;
-    color: var(--text-muted);
+body > header p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
 }
 
-/* Navbar Container */
 nav {
-    max-width: var(--container-max);
-    width: 100%;
-    margin: 0.5rem auto 2.5rem;
-    padding: 0 1rem;
-    display: flex;
-    justify-content: center;
+  max-width: var(--container-max);
+  margin: 0.5rem auto 2.5rem;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
 }
 
-/* Navbar Link Bar */
 nav ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 0.35rem;
-    background: var(--bg-surface);
-    padding: 0.4rem;
-    border-radius: var(--radius-pill);
-    border: 1px solid var(--border-subtle);
-    box-shadow: var(--shadow-soft);
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--bg-surface);
+  padding: 0.4rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-soft);
 }
 
 nav ul li a {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    color: var(--text-main);
-    font-family: var(--font-heading);
-    font-size: 0.875rem;
-    font-weight: 600;
-    border-radius: var(--radius-pill);
-    transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  color: var(--text-main);
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  transition: var(--transition);
 }
 
 nav ul li a:hover {
-    background: var(--bg-surface-alt);
-    color: var(--accent-hover);
+  background: var(--bg-surface-alt);
+  color: var(--accent-hover);
 }
 
 /* --- 4. MAIN & SECTIONS --- */
 main {
-    flex: 1;
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 1rem 3rem;
-    width: 100%;
+  flex: 1;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
 }
 
 main > h1 {
-    font-size: 1.6rem;
-    text-align: center;
-    margin-bottom: 1rem;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 main > p {
-    font-size: 0.975rem;
-    color: var(--text-muted);
-    text-align: center;
-    margin: 0 auto 2rem;
-    line-height: 1.7;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
 }
 
 section {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1rem;
 }
 
 section > h2 {
-    font-size: 1.25rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 2px solid var(--bg-surface-alt);
+  font-size: 1.25rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--bg-surface-alt);
 }
 
-/* --- 5. WEEKLY WORK GALLERY (GRID) --- */
+/* --- 5. WEEKLY WORK GALLERY --- */
 .weekly-list {
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
-}
-
-.weekly-list li {
-    display: flex;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
 }
 
 .weekly-list li a {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    min-height: 90px;
-    padding: 1.25rem 1rem;
-    background: var(--bg-surface);
-    color: var(--text-main);
-    font-family: var(--font-heading);
-    font-weight: 600;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-subtle);
-    box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  min-height: 90px;
+  padding: 1.25rem 1rem;
+  background: var(--bg-surface);
+  color: var(--text-main);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-soft);
 }
 
 .weekly-list li a:hover {
-    background: var(--bg-surface-alt);
-    color: var(--accent-hover);
-    border-color: var(--accent-amber);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
+  background: var(--bg-surface-alt);
+  color: var(--accent-hover);
+  border-color: var(--accent-amber);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
 }
 
 /* --- 6. ARTICLE CARDS --- */
 article {
-    background: var(--bg-surface);
-    border-radius: var(--radius-md);
-    padding: 1.25rem;
-    border: 1px solid var(--border-subtle);
-    box-shadow: var(--shadow-soft);
-    transition: var(--transition);
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition);
 }
 
 article header {
-    padding: 0;
-    text-align: left;
-    margin-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 article h2, article h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.2rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
 }
 
 time {
-    display: inline-block;
-    font-family: var(--font-heading);
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--accent-amber);
-    background: var(--bg-surface-alt);
-    padding: 0.15rem 0.65rem;
-    border-radius: var(--radius-pill);
-    margin-bottom: 0.5rem;
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-amber);
+  background: var(--bg-surface-alt);
+  padding: 0.15rem 0.65rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 0.5rem;
 }
 
 article p {
-    color: var(--text-main);
-    font-size: 0.95rem;
-    margin-bottom: 1rem;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
 }
 
-article p:last-child {
-    margin-bottom: 0;
+article p:last-child,
+footer p:last-child {
+  margin-bottom: 0;
 }
 
 article footer {
-    padding: 0;
-    margin-top: 1rem;
-    border: none;
-    background: transparent;
-}
-
-/* --- 7. FOOTER --- */
-footer {
-    background: var(--bg-surface-alt);
-    text-align: center;
-    padding: 2rem 1rem;
-    margin-top: auto;
-    border-top: 1px solid var(--border-subtle);
-}
-
-footer p {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 0.4rem;
-}
-
-footer p:last-child {
-    margin-bottom: 0;
-}
-
-/* --- 8. RESPONSIVE BREAKPOINTS --- */
-@media (min-width: 640px) {
-    body {
-        font-size: 1rem;
-    }
-
-    header {
-        padding: 3rem 1.5rem 1.25rem;
-    }
-
-    header h1 {
-        font-size: 2.1rem;
-    }
-
-    nav ul {
-        gap: 0.5rem;
-        padding: 0.4rem 0.6rem;
-    }
-
-    main {
-        padding: 0 1.5rem 3.5rem;
-    }
-
-    main > h1 {
-        font-size: 1.85rem;
-    }
-
-    .weekly-list {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 1.1rem;
-    }
-
-    .weekly-list li a {
-        min-height: 110px;
-        padding: 1.5rem 1.25rem;
-    }
-
-    article {
-        padding: 1.75rem;
-    }
-
-    article:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-hover);
-    }
-}
-
-@media (min-width: 1024px) {
-    header h1 {
-        font-size: 2.25rem;
-    }
-
-    .weekly-list {
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 1.25rem;
-    }
-
-    article {
-        padding: 2rem;
-    }
+  margin-top: 1rem;
 }
