@@ -1,4 +1,4 @@
-@import url('quiz.css');
+
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@500;600;700&display=swap');
 
 /* --- 1. DESIGN TOKENS --- */
@@ -9,7 +9,7 @@
   --text-main: #1C1917;
   --text-muted: #57534E;
   --accent-amber: #CA8A04;
-  --accent-hover: #A16207;
+  --accent-hover: #A16207; /* the variables */
   --border-subtle: rgba(202, 139, 4, 0.25);
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'DM Sans', sans-serif;
