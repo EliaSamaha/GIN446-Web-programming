@@ -4,6 +4,7 @@
 
     {% block head %}
         <link rel="stylesheet" href="{{ url_for('static', filename='form_style.css') }}"/>
+        <script src="{{ url_for('static', filename='profile-form.js') }}" defer></script>
     {% endblock %}
     
 <h2>Enginnering Student Profile</h2>
@@ -154,7 +155,7 @@
     <label for="Confirmation">I confirm that the information provided is accurate.</label>
     <input type="checkbox" id="Confirmation" name="confirmation" required>
 
-    <input type="submit" id="submit" value="Submit Profile">
+    <input type="submit" id="submit-btn" value="Submit Profile">
     <input type="reset" id="reset" value="Clear Form">
 </fieldset>
 <input type="hidden" name="form_version" value="2026-2027">
