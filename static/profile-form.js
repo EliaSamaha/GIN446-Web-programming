@@ -59,6 +59,9 @@ form.addEventListener("submit", function(event) {
     confirmB.addEventListener("click", function() {
         form.submit(); 
     });
+    const header1=document.createElement("h2");
+    header1.textContent=`1-Personal Info:`;
+    reviewP.appendChild(header1);
 
     const stdIdText = document.createElement("p");
     stdIdText.textContent = `Student Id: ${stdId}`;
@@ -88,6 +91,10 @@ form.addEventListener("submit", function(event) {
     rlinkText.textContent = `Render URL: ${rlink}`;
     reviewP.appendChild(rlinkText);
 
+      const header2=document.createElement("h2");
+    header2.textContent=`2-Academic Info:`;
+    reviewP.appendChild(header2);
+
     const majorText = document.createElement("p");
     majorText.textContent = `Engineering Major: ${major}`;
     reviewP.appendChild(majorText);
@@ -112,6 +119,10 @@ form.addEventListener("submit", function(event) {
     answerText.textContent = `Did you do an internship?: ${answer}`;
     reviewP.appendChild(answerText);
 
+  const header3=document.createElement("h2");
+    header3.textContent=`3-Technical Background:`;
+    reviewP.appendChild(header3);
+
     const skillsText = document.createElement("p");
     skillsText.textContent = `Technical Skills: ${skills.join(", ")}`; 
     reviewP.appendChild(skillsText);
@@ -123,6 +134,10 @@ form.addEventListener("submit", function(event) {
     const softText = document.createElement("p");
     softText.textContent = `Engineering Software Used: ${soft.join(", ")}`;
     reviewP.appendChild(softText);
+
+  const header4=document.createElement("h2");
+    header4.textContent=`4-Final Year Project`;
+    reviewP.appendChild(header4);
 
     const titleText = document.createElement("p");
     titleText.textContent = `Proposed Project Title: ${title}`;
