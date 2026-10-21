@@ -164,4 +164,17 @@ button {
 }
 
 button:hover:not(:disabled) {
-  background-color: #F1F5F9;
+  background-color: #F1F5F9;}
+  /* ======================================================
+   CORRECTION TEXT WRAPPING FIX
+   ====================================================== */
+#correction {
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-main);
+  margin-top: 16px;
+}
