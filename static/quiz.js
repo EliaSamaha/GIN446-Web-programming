@@ -189,6 +189,7 @@ function submitQuiz() {
 }
 
 function renderQuestion() {
+  const focused = document.activeElement;   // remember which button was pressed
   const q = questions[currentQuestion];
 
   // --------------------------------------------------
@@ -238,20 +239,37 @@ function renderQuestion() {
     currentQuestion === questions.length - 1;
   document.getElementById("lastBtn").disabled =
     currentQuestion === questions.length - 1;
+    restoreFocus(focused);
 }
 
 // ======================================================
 // DISPLAY RESULTS
 // ======================================================
 function showResults(score, percentage, message, correction) {
-  document.getElementById("quizPanel").style.display = "none";
-  document.getElementById("resultsPanel").style.display = "block";
+  document.getElementById("quizPanel").hidden = true;
+  document.getElementById("resultsPanel").hidden = false;
   document.getElementById("scoreText").textContent =
     `Score: ${score} / ${questions.length}`;
   document.getElementById("percentageText").textContent =
     `Percentage: ${percentage}%`;
   document.getElementById("performanceText").textContent = message;
   document.getElementById("correction").textContent = correction;
+    // Move focus to the results so keyboard and screen-reader users land on them
+  document.getElementById("resultsHeading").focus();
+}
+// ======================================================
+// KEEP KEYBOARD FOCUS IN PLACE
+// ======================================================
+// After the question changes, put focus back on the button the user
+// pressed. If that button is now disabled or hidden (e.g. "Next" on the
+// last question), move focus to the question instead so it isn't lost.
+function restoreFocus(el) {
+  if (!el || el === document.body) return;   // nothing was focused (first load)
+  if (el.disabled || el.offsetParent === null) {
+    document.getElementById("questionText").focus();
+  } else {
+    el.focus();
+  }
 }
 
 // ======================================================

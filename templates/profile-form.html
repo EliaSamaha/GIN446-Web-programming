@@ -1,14 +1,14 @@
 {% extends "base.html" %}
-{% block title %}Engineering Student Profile{% endblock %}
+{% block title %}Engineering Student Profile | Elia Samaha{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='form_style.css') }}"/>
+    <script src="{{ url_for('static', filename='profile-form.js') }}" defer></script>
+{% endblock %}
 {% block content %}
 
-    {% block head %}
-        <link rel="stylesheet" href="{{ url_for('static', filename='form_style.css') }}"/>
-        <script src="{{ url_for('static', filename='profile-form.js') }}" defer></script>
-    {% endblock %}
-    
-<h2>Enginnering Student Profile</h2>
+<h1>Engineering Student Profile</h1>
 <p>Complete this form to provide info about your academical background,technical skills and Final Year Project preferences.</p>
+<p>Fields marked <span class="req" aria-hidden="true">*</span> are required.</p>
 <form action="{{ url_for('submit_profile')}}"
       method="post">
 <fieldset>
@@ -20,15 +20,16 @@
     <label for="email">University Email:</label>
     <input type="email" id="email" name="email" placeholder="elia.w.samaha@net.usek.edu.lb" required>
     <label for="telnum">Mobile Number:</label>
-    <input type="tel" id="telnum" name="phone" placeholder="+961 xx/xxxxxx" pattern="+961 [0-9]{2}/[0-9]{6}" required>
+    <input type="tel" id="telnum" name="phone" placeholder="+961 71 123456" pattern="\+961 ?[0-9]{2} ?[0-9]{6}" aria-describedby="phone-hint" required>
+    <p class="hint" id="phone-hint">Format: +961 XX XXXXXX</p>
     <label for="dob">Date Of Birth:</label>
-    <input type="date" id="dob" name="birthdate" placeholder="8/10/2005" max="1/1/2008" min="1/1/1999" required>
-    <label for="glink">Github LInk:</label>
+    <input type="date" id="dob" name="birthdate" placeholder="8/10/2005" max="2008-01-01" min="1999-01-01" required>
+    <label for="glink">GitHub Link:</label>
     <input type="url" id="glink" name="portfolio" placeholder="https://github.com/eliasamaha" required>
     <label for="rlink">Render Link:</label>
     <input type="url" id="rlink" name="gin446" placeholder="Render link" required>
 </fieldset>
-<filedset>
+<fieldset>
     <legend>2-Academic Info</legend>
     <label for="major">Engineering Major</label>
     <select id="major" name="major" required>
@@ -66,7 +67,8 @@
 </fieldset>
 <fieldset>
     <legend>3-Technical Background</legend>
-    <label for="exp">Select all areas you have experience in</label>
+    <fieldset>
+    <legend>Select all areas you have experience in</legend>
     <label for="Programming">Programming</label>
     <input type="checkbox" id="Programming" name="skills" value="Programming">
     <label for="embedded">Embedded Systems</label>
@@ -79,6 +81,7 @@
     <input type="checkbox" id="installation" name="skills" value="Electrical Installation">
     <label for="ai">Artificial Intelligence</label>
     <input type="checkbox" id="ai" name="skills" value="Artificial Intelligence">
+    </fieldset>
 
     <label for="Lang">Primary programming language</label>
     <input list="Languages" id="Lang" name="language" placeholder="Choose or type" required>
@@ -101,7 +104,7 @@
         <option value="SolidWorks">SolidWorks</option>
         <option value="Multisim">Multisim</option>
         <option value="Altium Designer">Altium Designer</option>
-        <option value="CycoPacketTracer">CycoPacketTracer</option>
+        <option value="CycoPacketTracer">Cisco Packet Tracer</option>
         <option value="COMSOL Multiphysics">COMSOL Multiphysics</option>
     </select>
 
@@ -110,7 +113,7 @@
     <legend>4-Final Year Project</legend>
     <label for="title">Propose a title for your project</label>
     <input type="text" id="title" name="project_title" required>
-    <label for="area">Preffered project area</label>
+    <label for="area">Preferred project area</label>
     <select id="area" name="project_area" required>
          <option value="" disabled selected>Select your preferred project area</option>
 
@@ -129,7 +132,7 @@
         </optgroup>
         <optgroup label="Computer Engineer">
             <option value="Embedded Systems">Embedded Systems</option>
-            <option value="Software Developpment">Software Developpement</option>
+            <option value="Software Developpment">Software Development</option>
             <option value="Machine Learning">Machine Learning</option>
         </optgroup>
         <optgroup label="Biomedical Engineer">

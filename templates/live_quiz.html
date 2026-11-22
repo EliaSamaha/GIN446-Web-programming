@@ -1,12 +1,17 @@
-{% extends "base.html" %} {% block title %} Quiz {% endblock %} {% block head %}
+{% extends "base.html" %} {% block title %}Live Quiz | Elia Samaha{% endblock %} {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}" />
 {% endblock %} {% block content%}
-<main class="container">
-  <h1>JavaScript Quiz</h1>
+<div class="container">
+  <h1>Live Quiz</h1>
   <section id="quizPanel">
-    <p id="progress"></p>
-    <h2 id="questionText"></h2>
-    <div id="choices"></div>
+    <p id="progress" aria-live="polite"></p>
+    <h2 id="questionText" tabindex="-1"></h2>
+    <p id="loading" class="status status-loading" role="status">Loading question…</p>
+    <div id="error" class="status status-error" role="alert" hidden>
+      <p id="errorText"></p>
+      <button type="button" id="retryBtn" onclick="retry()">Try again</button>
+    </div>
+    <div id="choices" role="radiogroup" aria-labelledby="questionText"></div>
     <div class="navigation">
       <button id="firstBtn" onclick="goFirst()">First</button>
       <button id="previousBtn" onclick="goPrevious()">Previous</button>
@@ -14,17 +19,15 @@
       <button id="lastBtn" onclick="goLast()">Last</button>
     </div>
     <button class="submit" onclick="submitQuiz()">Submit Quiz</button>
-    <p id="loading" hidden>Loading...</p>
-    <p id="error" hidden></p>
   </section>
-  <section id="resultsPanel">
-    <h2>Quiz Results</h2>
+  <section id="resultsPanel" hidden>
+    <h2 id="resultsHeading" tabindex="-1">Quiz Results</h2>
     <p id="scoreText"></p>
     <p id="percentageText"></p>
     <p id="performanceText"></p>
     <h3>Correction</h3>
     <pre id="correction"></pre>
   </section>
-</main>
+</div>
 <script src="{{ url_for('static', filename='live_quiz.js') }}"></script>
 {% endblock %}

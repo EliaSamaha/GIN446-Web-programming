@@ -4,7 +4,7 @@
    ========================================================================== */
 
 /* --- 1. FORM CONTAINER & HEADER --- */
-main > h2 {
+main > h1 {
     font-family: var(--font-heading);
     font-size: 1.85rem;
     font-weight: 700;
@@ -116,7 +116,6 @@ textarea {
     background-color: var(--bg-base);
     border: 1px solid var(--border-subtle);
     border-radius: 8px;
-    outline: none;
     transition: var(--transition);
 }
 
@@ -126,14 +125,13 @@ textarea {
 }
 
 :is(input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="date"], input[type="month"], input[type="time"], input[type="number"], input[list], select, textarea):focus {
-    background-color: var(--bg-surface);
-    border-color: var(--accent-amber);
-    box-shadow: 0 0 0 3px rgba(202, 138, 4, 0.2);
+     background-color: var(--bg-surface);
+    border-color: var(--accent-hover);
 }
 
 /* Placeholder Styling */
 ::placeholder {
-    color: #A8A29E;
+    color: #736C66;
     opacity: 1;
 }
 
@@ -159,7 +157,7 @@ select[multiple] option {
 
 select[multiple] option:checked {
     background-color: var(--bg-surface-alt);
-    color: var(--accent-hover);
+    color: var(--accent-link);
     font-weight: 600;
 }
 
@@ -224,7 +222,7 @@ fieldset:last-of-type {
 }
 
 /* --- 5. ACTION BUTTONS (SUBMIT & RESET) --- */
-#submit,
+#submit-btn,
 #reset {
     font-family: var(--font-heading);
     font-weight: 600;
@@ -239,14 +237,14 @@ fieldset:last-of-type {
     align-items: center;
 }
 
-#submit {
-    background-color: var(--accent-amber);
+#submit-btn {
+    background-color: var(--accent-hover);
     color: #FFF;
     box-shadow: 0 4px 12px rgba(202, 138, 4, 0.25);
 }
 
-#submit:hover {
-    background-color: var(--accent-hover);
+#submit-btn:hover {
+    background-color: #854D0E;
     transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba(202, 138, 4, 0.35);
 }
@@ -262,7 +260,87 @@ fieldset:last-of-type {
     color: #000;
     transform: translateY(-2px);
 }
+/* Pressed state: the button visibly "goes down" */
+#submit-btn:active,
+#reset:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
 
+/* --- 5b. REQUIRED FIELDS, HINTS & ERRORS --- */
+/* Red * after the label of every required field (driven by the `required` attribute) */
+label:has(+ input[required]:not([type="radio"]))::after,
+label:has(+ select[required])::after,
+label:has(+ textarea[required])::after,
+fieldset:has(> input[type="radio"][required]) > legend::after{
+    content: " *";
+     content: " *" / "";
+    color: var(--error);}
+.req {
+    color: var(--error);
+}
+
+
+/* Inline error message under a field */
+.error {
+    display: block;
+    color: var(--error);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: -0.6rem;
+}
+
+.error::before {
+    content: "⚠ ";
+    content: "⚠ " / "Error: ";   /* screen readers say "Error:" instead of "warning sign" */
+}
+
+/* Red border on a field the server marked invalid */
+:is(input, select, textarea)[aria-invalid="true"] {
+
+/* Red border on a field that has an error right after it */
+:is(input, select, textarea):has(+ .error) {
+    border-color: var(--error);
+    background-color: var(--error-bg);
+}
+
+/* Error summary at the top of the form */
+.form-errors {
+    max-width: var(--container-max);
+    margin: 0 auto 1.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--error-bg);
+    border: 1px solid var(--error);
+    border-left-width: 5px;
+    border-radius: var(--radius-md);
+    color: var(--error);
+    font-weight: 600;
+}
+/* --- 5c. REVIEW PANEL (Week 4) --- */
+.review-panel {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 1.75rem 1.5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+}
+.review-panel h2 { font-size: 1.5rem; margin-bottom: 1rem; }
+.review-panel h3 { font-size: 1.1rem; margin: 1.25rem 0 0.5rem; }
+.review-panel p  { margin-bottom: 0.35rem; }
+.review-panel button {
+    margin: 0 0.5rem 0.5rem 0;
+    padding: 0.6rem 1.4rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-surface-alt);
+    color: var(--text-main);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    cursor: pointer;
+}
+.review-panel button:hover { background: #FDE68A; }
 /* --- 6. SUBMITTED PROFILE PAGE STYLING (`profile.html`) --- */
 .profile {
     background: var(--bg-surface);
@@ -306,11 +384,11 @@ fieldset:last-of-type {
         align-items: center;
     }
 
-    #submit, #reset {
+    #submit-btn, #reset {
         margin-top: 0.5rem;
     }
 
-    #submit {
+    #submit-btn {
         margin-left: auto;
     }
 }

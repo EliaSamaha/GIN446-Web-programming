@@ -142,6 +142,7 @@
    ====================================================== */
 .navigation {
   display: flex;
+  flex-wrap:wrap;
   gap: 10px;
   margin-top: 24px;
 }
@@ -160,14 +161,71 @@ button {
 }
 
 .navigation button {
-  flex: 1;
+  flex: 1 1 calc(50% - 5px);
+}
+
+@media (min-width: 480px) {
+  .navigation button {
+    flex: 1;
+  }
 }
 
 button:hover:not(:disabled) {
   background-color: #F1F5F9;}
-  /* ======================================================
-   CORRECTION TEXT WRAPPING FIX
+/* Pressed */
+button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* Disabled: greyed out, not clickable */
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Main action: Submit Quiz stands out from the navigation buttons */
+.submit {
+  width: 100%;
+  margin-top: 16px;
+  background-color: var(--primary-hover);   /* white on #A16207 = 4.9:1 */
+  border-color: var(--primary-hover);
+  color: #FFF;
+}
+
+.submit:hover:not(:disabled) {
+  background-color: #854D0E;
+}
+
+/* ======================================================
+   LOADING & ERROR STATES (Live Quiz)
    ====================================================== */
+.status {
+  margin: 0 0 20px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+}
+
+.status-loading {
+  background-color: var(--primary-light);
+  color: var(--text-main);
+}
+
+.status-error {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background-color: #FEF2F2;
+  border: 1px solid #B91C1C;
+  color: #B91C1C;
+  font-weight: 600;
+}
+
+.status-error p {
+  margin: 0;
+}
 #correction {
   white-space: pre-wrap;
   word-break: break-word;

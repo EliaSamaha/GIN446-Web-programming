@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
-{% block title %}My Web Programming Portfolio{% endblock %}
 
+{%block title%}Home | Elia Samaha — Web Programming{% endblock %}
     
 
     {% block content %}
@@ -9,7 +9,7 @@
         <section>
             <h2>Weekly Work</h2>
             <!-- Each week you add a link here to that week's page or feature. -->
-            <ul>
+            <ul class="weekly-list">
                 {% for item in weekly_work %}
                     <li><a href="{{ item.url }}">Week {{ item.week }} — {{ item.title }}</a></li>
                 {% else %}

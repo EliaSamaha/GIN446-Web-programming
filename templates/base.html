@@ -12,23 +12,23 @@
 {% endblock %}
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
     <header>
-        <h1>Web Programming Portfolio — Elia Samaha</h1>
-        <p>A live site that grows one page or feature every week.</p>
+        <p class="site-title">Web Programming Portfolio — Elia Samaha</p>
     </header>
     <nav>
    <ul>
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('internet_history') }}">Internet History</a></li>
-        <li><a href="{{ url_for('web_history') }}">Web History</a></li> 
-        <li><a href="{{ url_for('internet_history_ai') }}">Internet History (AI)</a></li>
-        <li><a href="{{ url_for('web_history_ai') }}">Web History (AI)</a></li>
+        <li><a href="{{ url_for('home') }}" {% if request.endpoint == 'home' %}aria-current="page"{% endif %}>Home</a></li>
+        <li><a href="{{ url_for('internet_history') }}" {% if request.endpoint == 'internet_history' %}aria-current="page"{% endif %}>Internet History</a></li>
+        <li><a href="{{ url_for('web_history') }}" {% if request.endpoint == 'web_history' %}aria-current="page"{% endif %}>Web History</a></li>
+        <li><a href="{{ url_for('internet_history_ai') }}" {% if request.endpoint == 'internet_history_ai' %}aria-current="page"{% endif %}>Internet History (AI)</a></li>
+        <li><a href="{{ url_for('web_history_ai') }}" {% if request.endpoint == 'web_history_ai' %}aria-current="page"{% endif %}>Web History (AI)</a></li>
     </ul>
 
 </nav>
 
 
-    <main>
+    <main id="main" tabindex="-1">
         {% block content %}
         
         {% endblock %}

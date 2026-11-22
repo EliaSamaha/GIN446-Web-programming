@@ -19,6 +19,11 @@
   --transition: all 0.25s ease; 
   --shadow-soft: 0 10px 25px -5px rgba(28, 25, 23, 0.05);
   --shadow-hover: 0 12px 30px -5px rgba(202, 138, 4, 0.15);
+   --focus-ring: #A16207;   
+  --error: #B91C1C;        
+  --error-bg: #FEF2F2;
+  --link: #854D0E;         /* deep amber text: 6.9:1 on white, 6.2:1 on yellow */
+  --link-hover: #713F12;
 }
 
 /* --- 2. GLOBAL RESET & BASE --- */
@@ -54,26 +59,85 @@ h1, h2, h3 {
 p, a {
   overflow-wrap: break-word;
 }
-
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 a {
-  color: var(--accent-amber);
+  color: var(--accent-link);
   text-decoration: none;
   transition: var(--transition);
 }
 
 a:hover {
-  color: var(--accent-hover);
+  color: var(--link-hover);
+}
+/* Links inside article text: underlined so they don't rely on colour alone */
+article a {
+  text-decoration: underline;
+  text-decoration-color: var(--accent-amber);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }
 
+/* Text that only screen readers read */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip link: hidden off-screen until a keyboard user tabs to it */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.6rem 1.1rem;
+  background: var(--text-main);
+  color: #FFF;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+}
+
+.skip-link:focus {
+  top: 1rem;
+  color: #FFF;
+}
+[hidden] {
+  display: none !important;
+}
+
+
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+[tabindex="-1"]:focus {
+  outline: none;
+}
 /* --- 3. HEADER & NAVIGATION --- */
 body > header {
+  width:100%;
   text-align: center;
   padding: 2.5rem 1rem 1.25rem;
   max-width: var(--container-max);
   margin: 0 auto;
 }
 
-body > header h1 {
+body > header .site-title {
+  font-family: var(--font-heading);
+  line-height: 1.25;
+  color: var(--text-main);
   font-size: 1.65rem;
   font-weight: 700;
   margin-bottom: 0.4rem;
@@ -86,6 +150,7 @@ body > header p {
 }
 
 nav {
+  width:100%;
   max-width: var(--container-max);
   margin: 0.5rem auto 2.5rem;
   padding: 0 1rem;
@@ -121,12 +186,18 @@ nav ul li a {
 
 nav ul li a:hover {
   background: var(--bg-surface-alt);
-  color: var(--accent-hover);
+  color: var(--link);
 }
 
+nav ul li a[aria-current="page"] {
+  background: var(--bg-surface-alt);
+  color: var(--text-main);
+  box-shadow: inset 0 0 0 1px var(--accent-amber);
+}
 /* --- 4. MAIN & SECTIONS --- */
 main {
   flex: 1;
+  width:100%;
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 1rem 3rem;
@@ -162,7 +233,7 @@ section > h2 {
 .weekly-list {
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 0.85rem;
 }
 
@@ -173,6 +244,7 @@ section > h2 {
   align-items: center;
   text-align: center;
   width: 100%;
+  height:100%;
   min-height: 90px;
   padding: 1.25rem 1rem;
   background: var(--bg-surface);
@@ -184,9 +256,10 @@ section > h2 {
   box-shadow: var(--shadow-soft);
 }
 
-.weekly-list li a:hover {
+.weekly-list li a:hover ,
+.weekly-list li a:focus-visible {
   background: var(--bg-surface-alt);
-  color: var(--accent-hover);
+  color: var(--link);
   border-color: var(--accent-amber);
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
@@ -235,4 +308,19 @@ footer p:last-child {
 
 article footer {
   margin-top: 1rem;
+}
+
+body > footer {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 1.5rem 1rem 2rem;
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+body > footer p + p {
+  margin-top: 0.35rem;
 }
