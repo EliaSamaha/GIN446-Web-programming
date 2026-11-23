@@ -289,7 +289,7 @@ time {
   font-family: var(--font-heading);
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--accent-amber);
+  color: var(--link);
   background: var(--bg-surface-alt);
   padding: 0.15rem 0.65rem;
   border-radius: var(--radius-pill);
